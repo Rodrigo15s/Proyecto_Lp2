@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Alumnos</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+		integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+
+<body class="">
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="col-md-2">
+			<a class="navbar-brand" href="/">INICIO</a>
+		</div>
+		<div class="collapse navbar-collapse col-md-10" id="navbarNav">
+			<ul class="navbar-nav col-md-12">
+				<li class="nav-item col-md-2">
+					<a class="nav-link" href="/administradores">Administradores</a>
+				</li>
+				<li class="nav-item col-md-2">
+					<a class="nav-link" href="/alumnos">Alumnos</a>
+				</li>
+				<li class="nav-item col-md-2">
+					<a class="nav-link" href="/cursos">Cursos</a>
+				</li>
+				<li class="nav-item col-md-2">
+					<a class="nav-link" href="/profesores">Profesores</a>
+				</li>
+				<li class="nav-item col-md-2">
+					<a class="nav-link" href="/padres">Padres</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<br>
+	<br>
+
+	<div>
+		<h2 class="text-center">Gestión de Alumnos</h2>
+	</div>
+
+	<br>
+	<br>
+
+	<div class="container">
+		<div class="d-flex justify-content-end">
+			<a href="/registrarAlumno">
+				<button class="btn btn-success">Registrar alumno</button>
+			</a>
+		</div>
+	</div>
+
+	<br>
+	<br>
+
+	<div class="container text-center col-md-10">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Nombres</th>
+					<th scope="col">Apellidos</th>
+					<th scope="col">Dni</th>
+					<th scope="col">Correo</th>
+					<th scope="col">Teléfono</th>
+					<th scope="col">Sexo</th>
+					<th scope="col">Fecha de Nacimiento</th>
+					<th scope="col">Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="alumno: ${listaAlumnos}">
+					<td th:text="${alumno.id}"></td>
+					<td th:text="${alumno.nombre}"></td>
+					<td th:text="${alumno.apellido}"></td>
+					<td th:text="${alumno.dni}"></td>
+					<td th:text="${alumno.correo}"></td>
+					<td th:text="${alumno.telefono}"></td>
+					<td th:text="${alumno.sexo}"></td>
+					<td th:text="${alumno.fecha_nac}">
+						</th>
+					<td>
+						<a class="btn btn-warning" th:href="@{'/editarAlumno/'+${alumno.id}}">Editar</a>
+						<a class="btn btn-danger" th:href="@{'/eliminarAlumno/'+${alumno.id}}">Eliminar</a>
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+
+</body>
+
+</html>
